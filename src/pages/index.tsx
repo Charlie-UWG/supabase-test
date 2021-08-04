@@ -1,6 +1,6 @@
 import { Auth, Button, IconLogOut } from "@supabase/ui";
 import { ReactNode } from "react";
-import { LayoutWrapper } from "../components/LayoutWrapper";
+import { LayoutWrapper } from "../components/layoutWrapper";
 import { client } from "../libs/supabase";
 
 type Props = {

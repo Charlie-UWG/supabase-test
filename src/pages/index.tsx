@@ -1,11 +1,13 @@
 import { Auth, Button, IconLogOut } from "@supabase/ui";
 import { ReactNode } from "react";
+import React from "react";
 import { LayoutWrapper } from "../components/layoutWrapper";
 import { client } from "../libs/supabase";
 
 type Props = {
   children: ReactNode;
 };
+
 const Container = (props: Props) => {
   const { user } = Auth.useUser();
 
@@ -28,6 +30,7 @@ const Container = (props: Props) => {
   //ログインしていない場合
   return <>{props.children}</>;
 };
+
 const Home = () => {
   return (
     <LayoutWrapper>

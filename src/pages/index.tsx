@@ -10,6 +10,7 @@ type Props = {
 
 const Container = (props: Props) => {
   const { user } = Auth.useUser();
+  console.log(user);
 
   //ログインしている場合
   if (user) {
@@ -28,6 +29,9 @@ const Container = (props: Props) => {
     );
   }
   //ログインしていない場合
+  console.log("ここ通るよね？");
+  console.log(props);
+
   return <>{props.children}</>;
 };
 

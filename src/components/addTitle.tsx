@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Fragment, useCallback, useState, VFC } from "react";
 
 import { client } from "src/libs/supabase";
+import add from "public/add.png";
 
 type props = {
   uuid: string;
@@ -51,40 +52,66 @@ export const AddTitle: VFC<props> = (props) => {
 
   return (
     <>
-      <div>
-        <div>ADD NEW</div>
+      <div className="p-2 border cursor-pointer" onClick={openModal}>
+        <div className="flex justify-center">
+          <Image src={add} alt="thumbnail" width={126} height={200} />
+        </div>
+        <div className="mt-2 text-center">ADD NEW</div>
         <Transition appear show={isOpen} as={Fragment}>
           <Dialog
             as="div"
             className="fixed inset-0 z-10 overflow-auto"
             onClose={closeModal}
           >
-            <div>
-              <span>&#8203;</span>
-              <Transition.Child as={Fragment} enter="ease-out duration-300">
-                <div>
-                  <Dialog.Title>Add Title</Dialog.Title>
-                  <div>
+            <div className="min-h-screen px-4 text-center border-2">
+              <span
+                className="inline-block h-screen align-middle"
+                aria-hidden="true"
+              >
+                &#8203;
+              </span>
+              <Transition.Child
+                as={Fragment}
+                enter="ease-out duration-300"
+                enterFrom="opacity-0 scale-95"
+                enterTo="opacity-100 scale-100"
+                leave="ease-in duration-200"
+                leaveFrom="opacity-100 scale-100"
+                leaveTo="opacity-0 scale-95"
+              >
+                <div
+                  className="inline-block w-full max-w-md p-6 my-8 ov›
+›erflow-hidden text-left align-middle transition-all transform border b›
+›order-gray-300 shadow-xl bg-gray-50 rounded-xl"
+                >
+                  <Dialog.Title
+                    as="h3"
+                    className="text-2xl font-medium leading-6 text-center text-gray-900"
+                  >
+                    Add Title
+                  </Dialog.Title>
+                  <div className="grid grid-cols-4 gap-2 mt-4">
+                    <div className="col-span-1 text-xl text-center">Title</div>
                     <input
-                      type="text"
+                      className="w-full h-10 col-span-3 p-2 bg-white border border-gray-300 rounded shadow appearance-none hover:border-gray-700"
                       value={title}
                       onChange={(e) => {
                         return setTitle(e.target.value);
                       }}
                     />
                   </div>
-                  <div>
-                    <div>Author</div>
+                  <div className="grid grid-cols-4 gap-2 mt-4">
+                    <div className="col-span-1 text-xl text-center">Author</div>
                     <input
-                      type="text"
+                      className="w-full h-10 col-span-3 p-2 bg-white border border-gray-300 rounded shadow appearance-none hover:border-gray-700"
                       value={author}
                       onChange={(e) => {
                         return setAuthor(e.target.value);
                       }}
                     />
                   </div>
-                  <div>
-                    <div>
+                  <div className="flex justify-center mt-4">
+                    <div className="w-32 p-2">
                       <Button
                         block
                         type="default"
@@ -92,10 +119,10 @@ export const AddTitle: VFC<props> = (props) => {
                         icon={<IconX />}
                         onClick={closeModal}
                       >
-                        Cncel
+                        Cancel
                       </Button>
                     </div>
-                    <div>
+                    <div className="w-32 p-2">
                       <Button
                         block
                         size="large"

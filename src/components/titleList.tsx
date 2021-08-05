@@ -27,24 +27,31 @@ export const TitleList = (props: TitlesProps) => {
   });
 
   return (
-    <div>
+    <div className="grid grid-cols-3 gap-2 m-4 sm:grid-cols-4 md:gridcols-5 lg:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8">
       <AddTitle uuid={props.uuid} getTitleList={props.getTitleList} />
       {filteredTitle.map((title) => {
         return (
           <Link key={title.id} href={`/title?id=${title.id}`} passHref>
-            <div>
-              {title.image_url ? (
-                <Image
-                  src={title.image_url}
-                  alt="thumbnale"
-                  width={126}
-                  height={200}
-                />
-              ) : (
-                <Image src={noImage} alt="thumbnale" width={126} height={200} />
-              )}
+            <div className="p-2 border cursor-pointer">
+              <div className="flex justify-center">
+                {title.image_url ? (
+                  <Image
+                    src={title.image_url}
+                    alt="thumbnale"
+                    width={126}
+                    height={200}
+                  />
+                ) : (
+                  <Image
+                    src={noImage}
+                    alt="thumbnale"
+                    width={126}
+                    height={200}
+                  />
+                )}
+              </div>
+              <div className="mt-2 text-center">{title.title}</div>
             </div>
-            <div>{title.title}</div>
           </Link>
         );
       })}
